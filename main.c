@@ -21,7 +21,7 @@ int main() {
     fclose(file1);
     
     //accessing character
-    printf("Character :%c\n\n", string[2]);
+    printf("Character :%s\n\n", string);
 
     FILE *file2 = fopen("file2.txt", "r");
     if (file2 == NULL) {
@@ -80,7 +80,7 @@ int main() {
 
     // Process the stored non-empty lines
     for (int i = 0; i < bufferIndex; i++) {
-        printf("Read line %d: %s\n", i + 1, buffer[i]);
+        printf("Read line %d: %s\n", i, buffer[i]);
     }
 
     //accessing the buffer
@@ -90,7 +90,34 @@ int main() {
     int N = strlen(buffer[1]);
     printf("\nN :%d\n",N);
 
+    //Verifying that the given input is perfect NxN matrix or not
+
+    int j,k=2,V=0;
+    // k is index for matrix[k][max], V is check for NxN matrix if its one then the given matrx is not NxN
+
+    for(j=0;j<N-1;j++)
+    {
+        if(strlen(buffer[k])==N)
+        {
+            V=0;
+            printf("\n%s V=%d\n",buffer[k],V);
+            k++;
+        }
+        else
+        {   
+            V=1;
+            printf("\n%s V=%d\n",buffer[k],V);
+            k++;
+        }
+    }
+
+    //now  K is intialized to final state index
+
+    //Closing file 2
+
     fclose(file2);
+
+    
 
     
 
