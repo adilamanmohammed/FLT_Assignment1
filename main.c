@@ -83,12 +83,17 @@ int main() {
         printf("Read line %d: %s\n", i, buffer[i]);
     }
 
+    //aphalet Length defining
+    int alphalength=strlen(buffer[0]);
+    //printf("alphalength:%d\n",alphalength);
+
+
     //accessing the buffer
-    printf("\nseparate :%c\n",buffer[2][0]);
+    //printf("\nseparate :%c\n",buffer[2][0]);
 
     //finding length of N in NxN Matrix:
     int N = strlen(buffer[1]);
-    printf("\nN :%d\n",N);
+    //printf("\nN :%d\n",N);
 
     //Verifying that the given input is perfect NxN matrix or not
 
@@ -100,13 +105,13 @@ int main() {
         if(strlen(buffer[k])==N && V!=1)
         {
             V=0;
-            printf("\n%s V=%d\n",buffer[k],V);
+            //printf("\n%s V=%d\n",buffer[k],V);
             k++;
         }
         else
         {   
             V=1;
-            printf("\n%s V=%d\n",buffer[k],V);
+            //printf("\n%s V=%d\n",buffer[k],V);
             k++;
         }
     }
@@ -122,7 +127,15 @@ int main() {
 
 
 
-    //
+    //DFSM logic
+
+    //Verify that NxN is correct and the first alphabet in the string and DFSM transition match the first character.
+
+
+
+
+
+
 
     
 
