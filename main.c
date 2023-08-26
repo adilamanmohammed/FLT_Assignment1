@@ -21,7 +21,7 @@ int main() {
     fclose(file1);
     
     //accessing character
-    printf("Character :%c\n", string[2]);
+    printf("Character :%c\n\n", string[2]);
 
     FILE *file2 = fopen("file2.txt", "r");
     if (file2 == NULL) {
@@ -84,10 +84,11 @@ int main() {
     }
 
     //accessing the buffer
-    printf("separate :%c",buffer[4][0]);
+    printf("\nseparate :%c\n",buffer[2][0]);
 
-
-
+    //finding length of N in NxN Matrix:
+    int N = strlen(buffer[1]);
+    printf("\nN :%d\n",N);
 
     fclose(file2);
 
@@ -95,4 +96,3 @@ int main() {
 
     return 0;
 }
-
