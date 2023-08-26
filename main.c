@@ -97,7 +97,7 @@ int main() {
 
     for(j=0;j<N-1;j++)
     {
-        if(strlen(buffer[k])==N)
+        if(strlen(buffer[k])==N && V!=1)
         {
             V=0;
             printf("\n%s V=%d\n",buffer[k],V);
@@ -113,11 +113,16 @@ int main() {
 
     //now  K is intialized to final state index
 
+    int finalstatelength= strlen(buffer[k]);
+    printf("final state: %s\t FSlength :%d \n ",buffer[k],finalstatelength);
+
     //Closing file 2
 
     fclose(file2);
 
-    
+
+
+    //
 
     
 
