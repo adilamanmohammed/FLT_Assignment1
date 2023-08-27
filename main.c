@@ -138,7 +138,10 @@ int main() {
 
     //Verify that NxN is correct and the first alphabet in the string and DFSM transition match the first character.
     //if V is 1 then the given transition table is not a NxN matrix
+
+    //remove V=0 if you want to run DFSM only with NxN matrix
     V=0;
+    
     if(V!=1)
     {
         printf("\nhi\n");
