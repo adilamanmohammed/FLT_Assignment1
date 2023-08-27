@@ -123,8 +123,8 @@ int main() {
 
     //now  K is intialized to final state index
 
-    int finalstatelength= strlen(buffer[k]);
-    printf("final state: %s\t FSlength :%d FSarrayIndex:%d\n ",buffer[k],finalstatelength,bufferIndex-1);
+    int finalstatelength= strlen(buffer[bufferIndex-1]);
+    printf("final state: %s\t FSlength :%d FSarrayIndex:%d\n ",buffer[bufferIndex-1],finalstatelength,bufferIndex-1);
 
     //Closing file 2
 
@@ -138,7 +138,7 @@ int main() {
 
     //Verify that NxN is correct and the first alphabet in the string and DFSM transition match the first character.
     //if V is 1 then the given transition table is not a NxN matrix
-
+    V=0;
     if(V!=1)
     {
         printf("\nhi\n");
@@ -173,7 +173,7 @@ int main() {
             }
 
         }
-        printf("\n finatstates=%s  statenum=%c DFSM=%d\n",buffer[3],statenum,DFSM);
+        printf("\n finatstates=%s  statenum=%c DFSM=%d\n",buffer[bufferIndex-1],statenum,DFSM);
 
         if(strchr(buffer[bufferIndex-1],statenum))
         {
