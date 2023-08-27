@@ -161,7 +161,9 @@ int main() {
 
                 //DFSM
                 statenum=buffer[DFSM][position];
-    
+                //covert character to integer and intialize to DFSM
+                DFSM=statenum-'0';
+                printf("DFSM=%d\n",DFSM);
 
 
             } 
@@ -171,14 +173,14 @@ int main() {
             }
 
         }
-        printf("\n buffer[3]=%s  statenum=%c\n",buffer[3],statenum);
+        printf("\n finatstates=%s  statenum=%c DFSM=%d\n",buffer[3],statenum,DFSM);
 
-        if(strchr(buffer[3],statenum))
+        if(strchr(buffer[bufferIndex-1],statenum))
         {
-            printf("\n Given String is NOT accepted by DFSM\n");
+            printf("\n Given String is Accepted by DFSM\n");
         }
         else{
-            printf("\n Given String is Accepted by DFSM final\n");
+            printf("\n Given String is Not Accepted by DFSM final\n");
         }
 
 
