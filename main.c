@@ -3,7 +3,7 @@
 #include <string.h>
 
 #define MAX 1000
-char buffer[MAX][MAX],string[MAX];
+char buffer[MAX][MAX],string[MAX],statenum;
 int bufferIndex = 0,DFSM=1,position=-1,found,stringlength=0;
 
 
@@ -155,17 +155,30 @@ int main() {
             int position = Verify_and_store_alpha_position(buffer[0], target);
 
             if (position != -1) {
-                printf("%c is present in Buffer[0] at position %d.\n", target, position);
+
+                //accessing the postion of alphabet
+                printf("%c is present in Buffer[0] at position %d\n", target, position);
+
+                //DFSM
+                statenum=buffer[DFSM][position];
+    
 
 
-
-
-                
             } 
             else 
             {
-                printf("%c is not present in Buffer[0].\n", target);
+                printf("\n String is NOT accepted by DFSM ");
             }
+
+        }
+        printf("\n buffer[3]=%s  statenum=%c\n",buffer[3],statenum);
+
+        if(strchr(buffer[3],statenum))
+        {
+            printf("\n Given String is NOT accepted by DFSM\n");
+        }
+        else{
+            printf("\n Given String is Accepted by DFSM final\n");
         }
 
 
