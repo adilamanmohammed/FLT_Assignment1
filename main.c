@@ -3,8 +3,36 @@
 #include <string.h>
 
 #define MAX 1000
+char buffer[MAX][MAX],string[MAX];
+int bufferIndex = 0,DFSM=1,position=-1,found,stringlength=0;
+
+
+int Verify_and_store_alpha_position(const char *buffer, char target) {
+    int position = -1;
+
+    for (int i = 0; i < strlen(buffer); i++) {
+        if (buffer[i] == target) {
+            position = i;
+            break; // Stop searching once found
+        }
+    }
+
+    return position;
+}
+
+
+
+/*Void DFSM_function()
+{
+
+}*/
+
+
+
 
 int main() {
+
+
     // Open the first text file for reading
     FILE *file1 = fopen("file1.txt", "r");
     if (file1 == NULL) {
@@ -13,53 +41,26 @@ int main() {
     }
 
     // Read the string from the first text file
-    char string[MAX];
     fgets(string, sizeof(string), file1);
     string[strcspn(string, "\n")] = '\0'; // Remove newline character
-
+    stringlength=strlen(string);
     // Close the first text file
     fclose(file1);
     
     //accessing character
-    printf("Character :%s\n\n", string);
+    printf("string :%s  stringlength=%d\n\n", string,stringlength);
 
+
+    //open the 2nd file
     FILE *file2 = fopen("file2.txt", "r");
     if (file2 == NULL) {
         perror("Error opening file2.txt");
         return 1;
     }
 
-    /*char alpha[MAX],buffer[MAX],matrix[MAX][MAX]; // Adjust the array size as needed
-    int Index = 0;
+    
 
-    int c;
-    while ((c = fgetc(file2)) != EOF && c != '\n') {
-        if (c != ' ') {
-            alpha[Index] = c;
-            Index++;
-        }
-    }
-
-    alpha[Index] = '\0'; // Null-terminate the result
-
-    //accessing alphabets
-    printf("Alphabets :%c\n", alpha[2]);
-    */
-
-
-
-
-
-
-
-
-
-
-    //jump to line 3
-    char buffer[MAX][MAX];
-    int bufferIndex = 0;
-
-    // Read lines and store non-empty lines (excluding lines with only spaces)
+    //Read lines and store non-empty lines (excluding lines with only spaces)
     while (fgets(buffer[bufferIndex], MAX, file2)) {
         int length = strlen(buffer[bufferIndex]);
 
@@ -78,7 +79,11 @@ int main() {
         }
     }
 
-    // Process the stored non-empty lines
+    //printing the buffer index
+    printf("bufferIndex:%d\n\n",bufferIndex);
+
+
+    // printing the stored non-empty lines
     for (int i = 0; i < bufferIndex; i++) {
         printf("Read line %d: %s\n", i, buffer[i]);
     }
@@ -119,20 +124,64 @@ int main() {
     //now  K is intialized to final state index
 
     int finalstatelength= strlen(buffer[k]);
-    printf("final state: %s\t FSlength :%d \n ",buffer[k],finalstatelength);
+    printf("final state: %s\t FSlength :%d FSarrayIndex:%d\n ",buffer[k],finalstatelength,bufferIndex-1);
 
     //Closing file 2
+
+    
 
     fclose(file2);
 
 
 
-    //DFSM logic
+    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<DFSM logic>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     //Verify that NxN is correct and the first alphabet in the string and DFSM transition match the first character.
+    //if V is 1 then the given transition table is not a NxN matrix
+
+    if(V!=1)
+    {
+        printf("\nhi\n");
 
 
 
+
+        //DFSM Logic
+        for(int i=0;i<stringlength;i++)
+        {
+
+            char target = string[i];
+
+            int position = Verify_and_store_alpha_position(buffer[0], target);
+
+            if (position != -1) {
+                printf("%c is present in Buffer[0] at position %d.\n", target, position);
+
+
+
+
+                
+            } 
+            else 
+            {
+                printf("%c is not present in Buffer[0].\n", target);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+    }
+    else{
+        printf("/n String is NOT accepted by DFSM ");
+    }
+    
 
 
 
