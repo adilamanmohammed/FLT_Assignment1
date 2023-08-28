@@ -21,47 +21,45 @@ int Verify_and_store_alpha_position(const char *buffer, char target) {
 }
 
 
+int main(int argc, char *argv[]) {
 
-/*Void DFSM_function()
-{
+    //verifying the command line argument
+    if(argc!=3)
+    {
+        printf("The given no.of arguments are incorrect please check your arguments in command line:\n");
+    }
 
-}*/
-
-
-
-
-int main() {
-
+    //printf("%s\t%s\n",argv[1],argv[2]);
 
     // Open the first text file for reading
-    FILE *file1 = fopen("file1.txt", "r");
-    if (file1 == NULL) {
-        perror("Error opening file1.txt");
+    FILE *file2 = fopen(argv[2], "r");
+    if (file2 == NULL) {
+        perror("Error opening string.txt");
         return 1;
     }
 
     // Read the string from the first text file
-    fgets(string, sizeof(string), file1);
+    fgets(string, sizeof(string), file2);
     string[strcspn(string, "\n")] = '\0'; // Remove newline character
     stringlength=strlen(string);
     // Close the first text file
-    fclose(file1);
+    fclose(file2);
     
     //accessing character
     printf("string :%s  stringlength=%d\n\n", string,stringlength);
 
 
     //open the 2nd file
-    FILE *file2 = fopen("file2.txt", "r");
-    if (file2 == NULL) {
-        perror("Error opening file2.txt");
+    FILE *file1 = fopen(argv[1], "r");
+    if (file1 == NULL) {
+        perror("Error opening DFSM.txt");
         return 1;
     }
 
     
 
     //Read lines and store non-empty lines (excluding lines with only spaces)
-    while (fgets(buffer[bufferIndex], MAX, file2)) {
+    while (fgets(buffer[bufferIndex], MAX, file1)) {
         int length = strlen(buffer[bufferIndex]);
 
         // Remove spaces from the line and store only non-space characters
@@ -105,6 +103,7 @@ int main() {
     int j,k=2,V=0;
     // k is index for matrix[k][max], V is check for NxN matrix if its one then the given matrx is not NxN
 
+    /*
     for(j=0;j<N-1;j++)
     {
         if(strlen(buffer[k])==N && V!=1)
@@ -119,7 +118,7 @@ int main() {
             //printf("\n%s V=%d\n",buffer[k],V);
             k++;
         }
-    }
+    }*/
 
     //now  K is intialized to final state index
 
@@ -130,7 +129,7 @@ int main() {
 
     
 
-    fclose(file2);
+    fclose(file1);
 
 
 
