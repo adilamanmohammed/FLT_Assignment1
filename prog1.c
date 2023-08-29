@@ -106,54 +106,29 @@ int main(int argc, char *argv[]) {
     //int j,k=2,V=0;
     // k is index for matrix[k][max], V is check for NxN matrix if its one then the given matrx is not NxN
 
-    /*
-    for(j=0;j<N-1;j++)
-    {
-        if(strlen(buffer[k])==N && V!=1)
-        {
-            V=0;
-            //printf("\n%s V=%d\n",buffer[k],V);
-            k++;
-        }
-        else
-        {   
-            V=1;
-            //printf("\n%s V=%d\n",buffer[k],V);
-            k++;
-        }
-    }*/
-
+    //check that the given transition is valid DFSM or Not
     int V=0;
     for(int j=1;j<=alphalength;j++)
     {
         if(strlen(buffer[j])==alphalength)
         {
-            //printf("buffer[%d]:%ld=alphalength:%d\n",j,strlen(buffer[j]),alphalength);
+            printf("buffer[%d]:%ld=alphalength:%d\n",j,strlen(buffer[j]),alphalength);
             V=0;
         }
         else{
-            //printf("transition is not valid state:%d length:%ld\n",j,strlen(buffer[j]));
+            printf("transition is not valid state:%d length:%ld\n",j,strlen(buffer[j]));
             V=1;
         }
     }
 
 
 
-
-
-
-
-
-
-    //now  K is intialized to final state index
-
     int finalstatelength= strlen(buffer[bufferIndex-1]);
+
     printf("final state: %s\t FSlength :%d FSarrayIndex:%d\n ",buffer[bufferIndex-1],finalstatelength,bufferIndex-1);
 
+
     //Closing file 2
-
-    
-
     fclose(file1);
 
 
@@ -165,13 +140,10 @@ int main(int argc, char *argv[]) {
 
     //remove V=0 if you want to run DFSM only with NxN matrix
     
+    printf("V=%d\n",V);
+    //add i more condition stringlength!=0 one more if loop
     if(V!=1)
     {
-        printf("\nhi\n");
-
-
-
-
         //DFSM Logic
         for(int i=0;i<stringlength;i++)
         {
@@ -199,6 +171,7 @@ int main(int argc, char *argv[]) {
             }
 
         }
+
         printf("\n finatstates=%s  statenum=%c DFSM=%d\n",buffer[bufferIndex-1],statenum,DFSM);
 
         if(strchr(buffer[bufferIndex-1],statenum))
@@ -209,18 +182,9 @@ int main(int argc, char *argv[]) {
             printf("\n Given String is Not Accepted by DFSM final\n");
         }
 
-
-
-
-
-
-
-
-
-
     }
     else{
-        printf("/n String is NOT accepted by DFSM ");
+        printf("\n String is NOT accepted by DFSM ");
     }
     
 
