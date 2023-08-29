@@ -28,6 +28,8 @@ int main(int argc, char *argv[]) {
     {
         printf("The given no.of arguments are incorrect please check your arguments in command line:\n");
     }
+    else
+    {
 
     //printf("%s\t%s\n",argv[1],argv[2]);
 
@@ -42,6 +44,7 @@ int main(int argc, char *argv[]) {
     fgets(string, sizeof(string), file2);
     string[strcspn(string, "\n")] = '\0'; // Remove newline character
     stringlength=strlen(string);
+
     // Close the first text file
     fclose(file2);
     
@@ -78,7 +81,7 @@ int main(int argc, char *argv[]) {
     }
 
     //printing the buffer index
-    printf("bufferIndex:%d\n\n",bufferIndex);
+    //printf("bufferIndex:%d\n\n",bufferIndex);
 
 
     // printing the stored non-empty lines
@@ -88,19 +91,19 @@ int main(int argc, char *argv[]) {
 
     //aphalet Length defining
     int alphalength=strlen(buffer[0]);
-    //printf("alphalength:%d\n",alphalength);
+    printf("alphalength:%d\n",alphalength);
 
 
     //accessing the buffer
     //printf("\nseparate :%c\n",buffer[2][0]);
 
     //finding length of N in NxN Matrix:
-    int N = strlen(buffer[1]);
+    //int N = strlen(buffer[1]);
     //printf("\nN :%d\n",N);
 
     //Verifying that the given input is perfect NxN matrix or not
 
-    int j,k=2,V=0;
+    //int j,k=2,V=0;
     // k is index for matrix[k][max], V is check for NxN matrix if its one then the given matrx is not NxN
 
     /*
@@ -119,6 +122,28 @@ int main(int argc, char *argv[]) {
             k++;
         }
     }*/
+
+    int V=0;
+    for(int j=1;j<=alphalength;j++)
+    {
+        if(strlen(buffer[j])==alphalength)
+        {
+            //printf("buffer[%d]:%ld=alphalength:%d\n",j,strlen(buffer[j]),alphalength);
+            V=0;
+        }
+        else{
+            //printf("transition is not valid state:%d length:%ld\n",j,strlen(buffer[j]));
+            V=1;
+        }
+    }
+
+
+
+
+
+
+
+
 
     //now  K is intialized to final state index
 
@@ -139,7 +164,6 @@ int main(int argc, char *argv[]) {
     //if V is 1 then the given transition table is not a NxN matrix
 
     //remove V=0 if you want to run DFSM only with NxN matrix
-    V=0;
     
     if(V!=1)
     {
@@ -200,10 +224,8 @@ int main(int argc, char *argv[]) {
     }
     
 
+    }
 
-
-
-    
 
     return 0;
 }
