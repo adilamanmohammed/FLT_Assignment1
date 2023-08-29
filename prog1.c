@@ -49,8 +49,9 @@ int main(int argc, char *argv[])
 
     //open the 1nd file DFSM.txt
     FILE *file1 = fopen(argv[1], "r");
-    if (file1 == NULL) {
-        perror("Error opening DFSM.txt");
+    if (file1 == NULL) 
+    {
+        perror("Check with string.txt Error opening the file");
         return 1;
     }
 
@@ -104,8 +105,9 @@ int main(int argc, char *argv[])
 	
     // Open the second text file string.txt for reading
     FILE *file2 = fopen(argv[2], "r");
-    if (file2 == NULL) {
-        perror("Error opening string.txt");
+    if (file2 == NULL) 
+    {
+        perror("Check with string.txt Error opening the file");
         return 1;
     }
 
@@ -206,7 +208,7 @@ int main(int argc, char *argv[])
         	}
         	else
 		{
-            	printf("\n NO \n");
+            	printf("\nNO \n");
         	}
 
     	}
