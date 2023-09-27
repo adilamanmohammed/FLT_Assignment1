@@ -1,10 +1,9 @@
 /*
 Name : Adil Aman Mohammed
 Course : Formal language theory
-Assignment no: 1
+Assignment no: 3
 CWID : A20395630
-Description: The following code is DFSM Logic which tell the given string is Accepted by given DFSM. 
-	     Input is given in Command file1 name : DFSM.txt, file2 name : string.txt
+Description: 
 */
 
 
