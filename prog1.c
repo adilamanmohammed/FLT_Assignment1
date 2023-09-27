@@ -80,17 +80,17 @@ int main(int argc, char *argv[])
     fclose(file1);
 
     //printing the buffer index
-    //printf("bufferindex:%d\n\n",buffindex);
+    printf("bufferindex:%d\n\n",buffindex);
 
 
-    // printing the stored non-empty lines
-    /*for (int i = 0; i < buffindex; i++) {
+    //printing the stored non-empty lines
+    for (int i = 0; i < buffindex; i++) {
        printf("buffer[%d]: %s\n", i, buffer[i]);
-    }*/
+    }
 
     //aphalet Length defining
     int alphalength=strlen(buffer[0]);
-    //printf("alphalength:%d\n",alphalength);
+    printf("alphalength:%d\n",alphalength);
 
 
     //accessing the buffer
@@ -111,7 +111,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    // Read the string from the first text file
+    // Read the string from the second text file
     fgets(string, sizeof(string), file2);
     string[strcspn(string, "\n")] = '\0'; // Remove newline character
     stringlength=strlen(string);
@@ -120,7 +120,7 @@ int main(int argc, char *argv[])
     fclose(file2);
     
     //accessing character
-    //printf("string :%s  stringlength=%d\n\n", string,stringlength);
+    printf("string :%s  stringlength=%d\n\n", string,stringlength);
 
 	
     //check that the given transition is valid DFSM or Not
@@ -146,7 +146,36 @@ int main(int argc, char *argv[])
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<DFSM Logic>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-	//check if the given string alphabets are in DFSM alphabets
+	if(stringlength==0)
+	{
+		printf("\nstring.txt is empty\n");
+	}
+	else if(buffindex==0)
+	{
+		printf("\nDFSM.txt is empty\n");
+	}
+	else if(V!=1)
+	{
+
+        //check if all the transitions are valid transition
+    for(int i=1;i<buffindex-1;i++)
+    {
+        for(int j=0;j<alphalength;j++)
+        {
+            if (buffer[i][j] >= '0' + buffindex-1)
+            {
+                printf("error %c is not a valid state transition DFSM is invalid",buffer[i][j]);
+                exit(0);
+            }
+        }
+    }
+
+
+
+
+
+
+        //check if the given string alphabets are in DFSM alphabets
 	for(int i=0;i<stringlength;i++)
 	{
 		if(strchr(buffer[0],string[i]))
@@ -160,16 +189,7 @@ int main(int argc, char *argv[])
 		}
 	}
 
-	if(stringlength==0)
-	{
-		printf("\nstring.txt is empty\n");
-	}
-	else if(buffindex==0)
-	{
-		printf("\nDFSM.txt is empty\n");
-	}
-	else if(V!=1)
-	{
+
 		//printf("\n all okay\n"); // debuging
 		//DFSM Logic
         	for(int i=0;i<stringlength;i++)
@@ -222,7 +242,6 @@ int main(int argc, char *argv[])
 	}
 	return 0;
 }
-
 
 
 
